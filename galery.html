@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berita Futsal</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+/* Gaya untuk seluruh halaman */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('background-futsal.jpg'); /* Ganti dengan gambar latar belakang futsal */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+}
+
+/* Gaya untuk header */
+.site-header {
+    text-align: center;
+    padding: 100px 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.site-header h1 {
+    font-size: 3em;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+}
+
+.site-header p {
+    font-size: 1.5em;
+    margin: 20px 0;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+/* Gaya untuk form pencarian */
+.search-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.search-input {
+    padding: 10px;
+    font-size: 1em;
+    width: 300px;
+    border: none;
+    border-radius: 25px 0 0 25px;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.search-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #f7c108;
+    color: white;
+    border: none;
+    border-radius: 0 25px 25px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: #ff9e1b;
+}
+
+/* Gaya untuk berita terbaru */
+.news-section {
+    position: relative;
+    padding: 50px 20px;
+    background-image: url('1919447.jpg'); /* Ganti dengan gambar latar belakang futsal */
+    background-size: cover; /* Membuat gambar latar menutupi seluruh area */
+    background-position: center; /* Menempatkan gambar di tengah */
+    background-attachment: fixed; /* Menjaga latar belakang tetap saat scroll */
+    color: white;
+}
+
+/* Gaya untuk berita terbaru */
+.news-background {
+    background-color: rgba(0, 0, 0, 0.5); /* Memberikan transparansi untuk meningkatkan keterbacaan */
+    padding: 50px 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.news-background h2 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.news-background p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.news-list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.news-item a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.2em;
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.news-item a:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #333;
+    text-decoration: underline;
+}
+
+.news-image {
+    width: 80px; /* Ukuran gambar thumbnail */
+    height: 80px; /* Ukuran gambar thumbnail */
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Berita Futsal</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+            </ul>
+            <ul>
+                <li><a href="anggota.html">Anggota</a></li>
+                <li><a href="club.html">club</a></li>
+            </ul>
+            <ul>
+                <li><a href="live.html">live</a></li>
+                <li><a href="galery.html">Galery</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <body>
+        <header class="site-header">
+            <h1>Selamat Datang di Dunia Futsal</h1>
+            <p>Ikuti perkembangan dunia futsal terbaru dengan berita dan informasi terbaik!</p>
+    
+            <!-- Form Pencarian -->
+            <form class="search-form" onsubmit="return searchContent()">
+                <input type="text" id="searchQuery" class="search-input" placeholder="Cari berita..." required>
+                <button type="submit" class="search-button">Cari</button>
+            </form>
+        </header>
+    
+        <section class="news-section">
+            <div class="news-background">
+                <h2>Berita Terbaru</h2>
+                <p>Ikuti perkembangan dunia futsal terbaru.</p>
+    
+                <div class="news-list">
+                    <div class="news-item" id="news-item-1">
+                        <a href="beritabaru 1.html">
+                            <img src="futsal.jpg" alt="Juara Baru dalam Kompetisi Futsal 2025" class="news-image">
+                            Juara Baru dalam Kompetisi Futsal 2025
+                        </a>
+                    </div>
+                    <div class="news-item" id="news-item-2">
+                        <a href="beritabaru2.html">
+                            <img src="th.jpg" alt="Peluncuran Program Pelatihan Futsal Baru" class="news-image">
+                            Pendaftaran Anggota Baru untuk Musim 2025
+                        </a>
+                    </div>
+                    <div class="news-item" id="news-item-3">
+                        <a href="beritabaru3.html">
+                            <img src="gambar3.jpg" alt="Turnamen Futsal Musim Panas 2025" class="news-image">
+                            Turnamen Futsal Musim Panas 2025
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <script>
+// Fungsi untuk melakukan pencarian pada konten berita
+function searchContent() {
+    // Ambil nilai dari input pencarian
+    let query = document.getElementById('searchQuery').value.toLowerCase();
+
+    // Ambil semua item berita
+    let newsItems = document.querySelectorAll('.news-item');
+
+    // Iterasi melalui setiap item berita dan periksa apakah judul berita cocok dengan pencarian
+    let found = false; // Variabel untuk menandakan apakah ada hasil pencarian
+    newsItems.forEach(function(item) {
+        let title = item.innerText.toLowerCase(); // Ambil teks dari item berita (judul)
+        
+        // Cek apakah judul berita mengandung query pencarian
+        if (title.includes(query)) {
+            item.style.display = 'block'; // Tampilkan item berita jika cocok
+            found = true;
+        } else {
+            item.style.display = 'none'; // Sembunyikan item berita jika tidak cocok
+        }
+    });
+
+    // Jika tidak ada hasil, tampilkan pesan "Tidak ditemukan"
+    if (!found) {
+        alert('Tidak ada berita yang ditemukan.');
+    }
+
+    return false; // Mencegah form untuk reload halaman
+}
+    </script>
+
+</body>
+</html>

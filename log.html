@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Pengguna</title>
+    <style>
+        .signup-container {
+            width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .signup-container h2 {
+            margin-bottom: 20px;
+        }
+        
+        .signup-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        
+        .signup-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .signup-container button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <h2>Daftar Profil</h2>
+        <div class="profile-form">
+            <label for="profile-name-input">Nama:</label>
+            <input type="text" id="profile-name-input" placeholder="Masukkan nama Anda" class="input-field">
+    
+            <label for="profile-img-input">Pilih Foto Profil:</label>
+            <input type="file" id="profile-img-input" class="input-field">
+            
+            <button onclick="saveProfile()" class="save-btn">Simpan Profil</button>
+        </div>
+    
+        <div id="profile-display" class="profile-display">
+            <img id="profile-img" alt="Foto Profil" class="profile-img">
+            <span id="profile-name" class="profile-name">Nama Pengguna</span>
+        </div>
+    </div>
+    
+    <div class="chat-container">
+        <div id="chat-box" class="chat-box">
+            <!-- Pesan akan tampil di sini -->
+        </div>
+    
+        <div class="input-container">
+            <input type="text" id="chat-input" placeholder="Tulis pesan..." class="chat-input">
+            <button onclick="sendMessage()" class="send-btn">Kirim</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById("signup-form").addEventListener("submit", function(event) {
+            event.preventDefault();  // Mencegah form dari pengiriman otomatis
+        
+            // Mendapatkan nilai dari input nama dan foto
+            var name = document.getElementById("name").value;
+            var profilePhoto = document.getElementById("profile-photo").files[0];
+        
+            // Validasi input
+            if (name.trim() === "" || !profilePhoto) {
+                alert("Silakan masukkan nama dan foto profil!");
+                return;
+            }
+        
+            // Menyimpan data pengguna di LocalStorage
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                // Simpan nama dan foto profil dalam localStorage
+                localStorage.setItem("username", name);
+                localStorage.setItem("profilePhoto", e.target.result);  // Menyimpan data gambar sebagai URL
+        
+                // Arahkan pengguna ke halaman obrolan
+                window.location.href = "pesan.html";  // Ganti dengan halaman chat kamu
+            };
+            reader.readAsDataURL(profilePhoto);  // Membaca file gambar sebagai data URL
+        });
+    </script>
+</body>
+</html>

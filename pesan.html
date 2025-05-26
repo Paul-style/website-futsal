@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Inbox</title>
+    <style>
+/* Styling untuk chat container */
+.chat-container {
+    width: 350px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* Tampilan profil kecil */
+.message-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.message-profile-img {
+    width: 30px; /* Ukuran gambar profil kecil */
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover; /* Gambar mengikuti ukuran kontainer */
+    border: 2px solid #4CAF50; /* Border hijau untuk kesan cinematic */
+}
+
+/* Tampilan pesan */
+.message {
+    display: flex;
+    align-items: flex-start;
+    margin: 10px 0;
+}
+
+.message-text {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%; /* Batas lebar untuk pesan */
+    word-wrap: break-word; /* Agar teks panjang tidak keluar */
+    position: relative;
+}
+
+/* Nama pengirim */
+.message-sender {
+    font-weight: bold;
+    color: #333;
+    margin-right: 5px;
+}
+
+/* Teks pesan */
+.message-content {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Pesan dari pengguna (align to the right) */
+.user-message {
+    justify-content: flex-end; /* Pesan pengguna ada di sebelah kanan */
+}
+
+.user-message .message-text {
+    background-color: #4CAF50; /* Warna hijau untuk pesan pengguna */
+    color: white;
+    text-align: right;
+}
+
+/* Pesan dari pengguna lain (align to the left) */
+.other-message {
+    justify-content: flex-start; /* Pesan pengguna lain ada di sebelah kiri */
+}
+
+.other-message .message-text {
+    background-color: #f1f1f1; /* Warna netral untuk pesan orang lain */
+    color: #333;
+}
+
+/* Chatbox styling */
+#chat-box {
+    padding: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Input dan tombol kirim */
+.input-container {
+    display: flex;
+    padding: 10px;
+    background-color: #f7f7f7;
+}
+
+.chat-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.send-btn {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.send-btn:hover {
+    background-color: #45a049;
+}
+        
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Profil pengguna -->
+        <div class="profile">
+            <img id="profile-img" alt="Foto Profil" class="profile-img">
+            <span id="profile-name" class="profile-name">Nama Pengguna</span>
+        </div>
+    
+        <div id="chat-box" class="chat-box">
+            <!-- Pesan akan tampil di sini -->
+        </div>
+    
+        <div class="input-container">
+            <input type="text" id="chat-input" placeholder="Tulis pesan..." class="chat-input">
+            <button onclick="sendMessage()" class="send-btn">Kirim</button>
+        </div>
+    </div>
+    <script>
+        // Load messages from localStorage and display them when the page is loaded
+document.addEventListener("DOMContentLoaded", loadMessages);
+
+// Function to send a message
+function sendMessage() {
+    var messageText = document.getElementById("chat-input").value;
+    if (messageText.trim() === "") return; // Don't send empty messages
+
+    // Create message object
+    var message = {
+        sender: "Nama Pengguna", // Replace with dynamic user name if necessary
+        text: messageText,
+        type: "user" // Type can be "user" or "other"
+    };
+
+    // Save message to localStorage
+    var messages = JSON.parse(localStorage.getItem("messages")) || [];
+    messages.push(message);
+    localStorage.setItem("messages", JSON.stringify(messages));
+
+    // Add message to the chat box
+    displayMessage(message);
+
+    // Clear the input field
+    document.getElementById("chat-input").value = "";
+
+    // Scroll to the bottom of the chat box
+    var chatBox = document.getElementById("chat-box");
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+// Function to display messages in the chat box
+function displayMessage(message) {
+    var chatBox = document.getElementById("chat-box");
+
+    // Create the message element
+    var messageElement = document.createElement("div");
+    messageElement.classList.add("message", message.type === "user" ? "user-message" : "other-message");
+
+    var profileElement = document.createElement("div");
+    profileElement.classList.add("message-profile");
+    var profileImage = document.createElement("img");
+    profileImage.src = message.type === "user" ? "profile.jpg" : "other-profile.jpg"; // Use respective profiles
+    profileImage.classList.add("message-profile-img");
+    profileElement.appendChild(profileImage);
+
+    var textElement = document.createElement("div");
+    textElement.classList.add("message-text");
+
+    var senderElement = document.createElement("span");
+    senderElement.classList.add("message-sender");
+    senderElement.textContent = message.sender + ":";
+
+    var contentElement = document.createElement("span");
+    contentElement.classList.add("message-content");
+    contentElement.textContent = message.text;
+
+    textElement.appendChild(senderElement);
+    textElement.appendChild(contentElement);
+
+    messageElement.appendChild(profileElement);
+    messageElement.appendChild(textElement);
+
+    chatBox.appendChild(messageElement);
+}
+
+// Function to load messages from localStorage and display them when the page loads
+function loadMessages() {
+    var messages = JSON.parse(localStorage.getItem("messages")) || [];
+    messages.forEach(function (message) {
+        displayMessage(message);
+    });
+}
+    </script>
+</body>
+</html>

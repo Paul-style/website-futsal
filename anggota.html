@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Anggota</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Bagian Anggota Terdaftar */
+        section {
+            padding: 50px;
+            background: rgba(0, 0, 0, 0.7); /* Transparansi untuk latar belakang */
+            border-radius: 10px;
+            max-width: 900px;
+            margin: 50px auto;
+            overflow-x: auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #ffd700; /* Warna emas untuk menarik perhatian */
+            margin-bottom: 20px;
+        }
+
+        /* Search Box */
+        .search-box {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-box input {
+            padding: 10px;
+            font-size: 1em;
+            width: 80%;
+            max-width: 400px;
+            margin: 0 auto;
+            display: block;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #333;
+            color: #ffd700;
+        }
+
+        td {
+            background-color: #444;
+        }
+
+        tr:nth-child(even) {
+            background-color: #555;
+        }
+
+        tr:hover {
+            background-color: #666;
+        }
+
+
+
+        .delete-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .delete-btn:hover {
+            background-color: #c0392b;
+        }
+
+
+
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            margin-top: 50px;
+            color: #ffd700;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            section {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+        }
+
+
+ /* Kontainer untuk Tabel */
+ .table-container {
+    background: rgba(0, 0, 0, 0.7); /* Transparansi untuk latar belakang */
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 90%;
+    overflow-x: auto;
+    margin-bottom: 50px;
+}
+
+/* Tabel */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+    margin-bottom: 30px;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: rgba(255, 215, 0, 0.8); /* Emas transparan */
+    color: black;
+    font-size: 1.2em;
+}
+
+table td {
+    background-color: rgba(0, 0, 0, 0.5); /* Transparansi pada data */
+}
+
+table tr:hover {
+    background-color: rgba(255, 215, 0, 0.3);
+}
+
+/* Judul Tabel */
+h2 {
+    font-size: 2.5em;
+    color: #ffd700;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 2em;
+    color: #ffd700;
+    margin-top: 30px;
+}
+
+/* Gaya untuk Foto Mini */
+.photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Gaya untuk Tautan */
+a {
+    color: #ffd700;
+    text-decoration: none;
+}
+
+
+
+
+
+        /* Hover Effect for Table Rows */
+        tr:hover {
+            background-color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="foto-background">
+        <img src="n.jpg" alt="foto/jpg">
+     </div>
+ 
+    <header>
+
+        <div class="logo">
+            <img src="l.png" alt="foto/jpg">
+        </div>
+
+        <h1>Turnamen Sepak Bola 2025</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+            </ul>
+            <ul>
+                <li><a href="anggota.html">Anggota</a></li>
+                <li><a href="club.html">club</a></li>
+            </ul>
+            <ul>
+                <li><a href="live.html">live</a></li>
+                <li><a href="galery.html">Galery</a></li>
+            </ul>
+        </nav>
+    </header>
+<!-- Anggota Terdaftar Section -->
+<!-- Anggota Terdaftar Section -->
+<section>
+    <h2>Anggota Terdaftar</h2>
+    
+    <!-- Search Box -->
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Cari anggota berdasarkan nama..." onkeyup="searchTable()">
+    </div>
+
+    <table id="teamTable">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Nama</th>
+                <th>Umur</th>
+                <th>Group</th>
+                <th>Posisi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>
+                    <a href="bio.html">
+                        <img src="FPY.JPG" alt="FPY" class="photo">
+                        FPY
+                    </a>
+               </td>
+                <td>27</td>
+                <td>
+                    <a href="klub a.html"> Group A</a>
+                </td>
+                <td>Penyerang/bertahan</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>
+                    <a href="bio.html">
+                        <img src="FPY.JPG" alt="FPY" class="photo">
+                        FPY
+                    </a>
+               </td>
+                <td>27</td>
+                <td>
+                    <a href="klub a.html"> Group A</a>
+                </td>
+                <td>Penyerang/bertahan</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>
+                    <a href="bio.html">
+                        <img src="beny.jpg" alt="FPY" class="photo">
+                        Benyamin                    </a>
+               </td>
+                <td>28</td>
+                <td>
+                    <a href="klub a.html"> Group A</a>
+                </td>
+                <td>Penyerang/bertahan</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>
+                    <a href="bio.html">
+                        <img src="etox.jpg" alt="FPY" class="photo">
+                        etox                    </a>
+               </td>
+                <td>28</td>
+                <td>
+                    <a href="klub a.html"> Group A</a>
+                </td>
+                <td>Penyerang/bertahan</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>
+                    <a href="bio.html">
+                        <img src="rio.jpg" alt="FPY" class="photo">
+                        rio                    </a>
+               </td>
+                <td>28</td>
+                <td>
+                    <a href="klub a.html"> Group A</a>
+                </td>
+                <td>Penyerang/bertahan</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>
+                    <a href="bio.html">
+                        <img src="lejo.jpg" alt="FPY" class="photo">
+                        leo                   </a>
+               </td>
+                <td>28</td>
+                <td>
+                    <a href="klub a.html"> Group A</a>
+                </td>
+                <td>Penyerang/bertahan</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>
+                    <a href="bio.html">
+                        <img src="aga.jpg" alt="FPY" class="photo">
+                        aga                   </a>
+               </td>
+                <td>28</td>
+                <td>
+                    <a href="klub a.html"> Group A</a>
+                </td>
+                <td>Penyerang/bertahan</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>
+                    <a href="bio.html">
+                        <img src="herox.jpg" alt="FPY" class="photo">
+                       hero                  </a>
+               </td>
+                <td>28</td>
+                <td>
+                    <a href="klub a.html"> Group A</a>
+                </td>
+                <td>Penyerang/bertahan</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>
+                    <a href="bio.html">
+                        <img src="zet.jpg" alt="FPY" class="photo">
+                       zet                  </a>
+               </td>
+                <td>28</td>
+                <td>
+                    <a href="klub a.html"> Group A</a>
+                </td>
+                <td>Penyerang/bertahan</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+<footer>
+    <p>&copy; 2025 Organisasi Futsal. Semua Hak Dilindungi.</p>
+</footer>
+
+<script>
+// JavaScript untuk menambah anggota baru ke dalam tabel
+function addPlayer() {
+    const table = document.getElementById("teamTable").getElementsByTagName('tbody')[0];
+    const newRow = table.insertRow(table.rows.length);
+    
+    const cell1 = newRow.insertCell(0);
+    const cell2 = newRow.insertCell(1);
+    const cell3 = newRow.insertCell(2);
+    const cell4 = newRow.insertCell(3);
+    const cell5 = newRow.insertCell(4);
+    
+    // Data dummy, ganti dengan input dinamis jika diperlukan
+    cell1.innerHTML = table.rows.length;
+    cell2.innerHTML = prompt("Masukkan nama anggota:");
+    cell3.innerHTML = prompt("Masukkan umur anggota:");
+    cell4.innerHTML = prompt("Masukkan grup anggota:");
+    cell5.innerHTML = prompt("Masukkan posisi anggota:");
+}
+
+// Function to search table
+function searchTable() {
+    const input = document.getElementById("searchInput");
+    const filter = input.value.toUpperCase();
+    const table = document.getElementById("teamTable");
+    const tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those that don't match the search
+    for (let i = 1; i < tr.length; i++) {  // start from 1 to skip the header row
+        const td = tr[i].getElementsByTagName("td")[1];  // Get the "Nama" column (index 1)
+        if (td) {
+            const textValue = td.textContent || td.innerText;
+            if (textValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+</script>
+
+</body>
+</html>
