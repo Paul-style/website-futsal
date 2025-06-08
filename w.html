@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekrutmen Anggota Futsal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        header {
+            background-color: #009688;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            margin: 0;
+        }
+        
+        #form-section {
+            background-color: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input, select {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 0,5px;
+            background-color: #009688;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        
+        
+        
+        
+        
+        /* Bagian Daftar Anggota */
+        #daftar-peserta {
+            background-color: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        #peserta-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        #peserta-list li {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        
+        #peserta-list li strong {
+            color: #009688;
+        }
+        
+        div {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-color: #009688;
+            padding: 20px;
+            margin: 5px;
+            text-align: center;
+        }
+        div li a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 5px 14px;
+            text-decoration: none;
+        }
+        
+        /* Bagian Daftar Anggota */
+        #daftar-peserta {
+            background-color: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        #peserta-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        #peserta-list li {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        
+        #peserta-list li strong {
+            color: #009688;
+        }
+        
+        /* Gaya untuk pesan */
+        #peserta-list li p {
+            font-style: italic;
+            color: #555;
+        }
+        
+        
+        
+        
+        /* Gaya untuk tombol hapus */
+        button {
+            padding: 8px 12px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Rekrutmen Anggota Turnamen Futsal</h1>
+        <p>Gabung dan tunjukkan kemampuanmu di turnamen futsal kami!</p>
+    </header>
+
+    <section id="form-section">
+        <h2>Form Pendaftaran Anggota</h2>
+        <form id="rekrut-form">
+            <label for="name">Nama Lengkap:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="tanggal">tanggal lahir:</label>
+            <input type="tanggal" id="tanggal" name="tanggal" required><br><br>
+        
+            <label for="phone">Nomor Telepon:</label>
+            <input type="tel" id="phone" name="phone" required><br><br>
+
+            <label for="club">club:</label>
+            <input type="club" id="club" name="club" required><br><br>
+
+            <label for="wilayah">kompleks:</label>
+            <input type="wilayah" id="wilayah" name="wiayah" required><br><br>
+
+            <label for="skill">Tingkat Keahlian Futsal:</label>
+            <select id="skill" name="skill">
+                <option value="GK">kiper</option>
+                <option value="Player">Pemain</option>
+                <option value="coach">pelatih</option>
+            </select><br><br>
+
+            <label for="message">Pesan:</label>
+            <textarea id="message" name="message" rows="4" placeholder="Tulis pesan Anda di sini"></textarea><br><br>
+
+            <button type="submit">Daftar</button>
+        </form>
+    </section>
+
+    <section id="confirmation-section" style="display: none;">
+        <h2>Terima Kasih!</h2>
+        <p>Anda telah berhasil mendaftar untuk turnamen futsal.</p>
+    </section>
+
+    <!-- Daftar Pendaftaran Anggota -->
+    <section id="daftar-peserta">
+        <h2>Daftar Anggota yang Terdaftar:</h2>
+        <ul id="peserta-list">
+            <!-- Daftar peserta akan muncul di sini -->
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Turnamen Futsal</p>
+    </footer>
+
+    <script>
+        // Menangani pengiriman form
+document.getElementById('rekrut-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Menghindari form reload halaman
+
+    // Ambil data dari form
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const tanggal = document.getElementById('tanggal').value;
+    const phone = document.getElementById('phone').value;
+    const club = document.getElementById('club').value;
+    const wilayah = document.getElementById('wilayah').value;
+    const skill = document.getElementById('skill').value;
+    const message = document.getElementById('message').value; // Pesan
+    const date = new Date().toLocaleString(); // Menambahkan tanggal pendaftaran
+
+    // Menyimpan data pendaftaran ke dalam array
+    const peserta = {
+        name: name,
+        email: email,
+        tanggal: tanggal,
+        phone: phone,
+        club: club,
+        wilayah: wilayah,
+        skill: skill,
+        message: message, // Menyimpan pesan
+        date: date // Menyimpan tanggal pendaftaran
+    };
+
+    // Ambil daftar peserta yang sudah ada dari localStorage
+    let pesertaList = JSON.parse(localStorage.getItem('pesertaList')) || [];
+
+    // Tambahkan peserta baru ke dalam daftar
+    pesertaList.push(peserta);
+
+    // Simpan kembali daftar peserta ke localStorage
+    localStorage.setItem('pesertaList', JSON.stringify(pesertaList));
+
+    // Menampilkan daftar peserta terbaru
+    tampilkanPeserta();
+
+    // Tampilkan halaman konfirmasi
+    document.getElementById('form-section').style.display = 'none';
+    document.getElementById('confirmation-section').style.display = 'block';
+});
+
+// Fungsi untuk menampilkan daftar peserta
+function tampilkanPeserta() {
+    const pesertaList = JSON.parse(localStorage.getItem('pesertaList')) || [];
+    const pesertaListElement = document.getElementById('peserta-list');
+    pesertaListElement.innerHTML = ''; // Kosongkan daftar peserta sebelumnya
+
+    pesertaList.forEach((peserta, index) => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <strong>${peserta.name}</strong><br>
+            Email: ${peserta.email}<br>
+            tanggal: ${peserta.tanggal}<br>
+            Telepon: ${peserta.phone}<br>
+            wilayah: ${peserta.wilayah}<br>
+            club: ${peserta.club}<br>
+            Keahlian: ${peserta.skill}<br>
+            <strong>Pesan:</strong><br>
+            ${peserta.message || 'Tidak ada pesan.'}<br>
+            <strong>Tanggal Pendaftaran:</strong> ${peserta.date}<br>
+        `;
+        pesertaListElement.appendChild(li);
+    });
+}
+    </script>
+</body>
+</html>
